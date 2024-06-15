@@ -53,7 +53,7 @@ void test_4(){
     assert(testTree.search(2) == nullptr);
     std::vector<int> inorderResult = testTree.inorderTraversal();
     assert(inorderResult == std::vector<int>({1, 3, 4, 5, 7}));
-    testTree.delete_element(5);
+    testTree. (5);
 
     assert(testTree.search(5) == nullptr);
     assert(testTree.search(3) != nullptr);
