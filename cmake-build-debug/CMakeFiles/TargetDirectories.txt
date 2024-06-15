@@ -1,0 +1,3 @@
+C:/Users/kakas/CLionProjects/FINAL_LABA_2_FOR_SUBBMITTING/cmake-build-debug/CMakeFiles/FINAL_LABA_2_FOR_SUBBMITTING.dir
+C:/Users/kakas/CLionProjects/FINAL_LABA_2_FOR_SUBBMITTING/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/kakas/CLionProjects/FINAL_LABA_2_FOR_SUBBMITTING/cmake-build-debug/CMakeFiles/rebuild_cache.dir
