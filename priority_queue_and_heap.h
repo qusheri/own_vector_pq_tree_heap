@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 #include "definitions.h"
-
+#include "functional"
 template<typename T>
 class PriorityQueue{
 private:

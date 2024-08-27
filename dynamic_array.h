@@ -1,5 +1,6 @@
 #pragma once
 #include "Error_Handler.h"
+#include "vector"
 template<typename T>
 class DynamicArray {
 private:
@@ -15,6 +16,11 @@ public:
     DynamicArray(const DynamicArray &array) : size_(array.size_), val(new T[size_]) {
         std::copy(array.val, array.val + size_, val);
     }
+
+    DynamicArray(const std::vector<T>& array) : size_(array.size()), val(new T[array.size()]) {
+        std::copy(array.begin(), array.end(), val);
+    }
+
     DynamicArray(T* items, size_t count) : size_(count), val(new T[count]){
         for(size_t i = 0; i != count; ++i){
             T n = items[i];

@@ -1,6 +1,7 @@
-#include "priority_queue&heap.h"
+#include "priority_queue_and_heap.h"
 #include "BST.h"
 #include "Heap.h"
+#include "cassert"
 void test_map(){
     bst<int> test = bst<int>({1, 2, 3}).map([](int x){return x + 5;});
     vector<int> a = test.lkp();
@@ -53,7 +54,7 @@ void test_4(){
     assert(testTree.search(2) == nullptr);
     std::vector<int> inorderResult = testTree.inorderTraversal();
     assert(inorderResult == std::vector<int>({1, 3, 4, 5, 7}));
-    testTree. (5);
+    testTree.delete_element(5);
 
     assert(testTree.search(5) == nullptr);
     assert(testTree.search(3) != nullptr);

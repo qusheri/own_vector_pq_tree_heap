@@ -3,7 +3,7 @@
 #include "list.h"
 #include "dynamic_array.h"
 #include "queue.h"
-#include "priority_queue&heap.h"
+#include "priority_queue_and_heap.h"
 void TestSequence(Sequence<int> *sequence) {
     ImmutableList<int> list1;
     ImmutableList<int> newList = list1.InsertAt(10, 0);

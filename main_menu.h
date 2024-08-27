@@ -1,26 +1,28 @@
 #include "iostream"
-#include "interface.h"
-#include "3_lab_interface.h"
-#include "interface_4.h"
+#include "interface_3_1.h"
 using namespace std;
 void menu(){
-    int lab_num;
+    int act;
     while(true) {
-        cout << "Insert lab's num(2, 3 or 4):\n"
-                "Insert 0 to exit\n";
-        cin >> lab_num;
-        switch (lab_num) {
+        cout << "Select action:\n"
+                "1. Start Sequnce<T> tests\n"
+                "2. Start Sorting algorithms tests\n"
+                "3. Input source data\n"
+                "0. Exit.\n";
+        cin >> act;
+        switch (act) {
             case 0:
                 cout << "Exiting..\n";
                 return;
+            case 1:
+                test_4();
+                break;
             case 2:
-                interface();
+                test_3_1();
                 break;
             case 3:
-                interface_3();
+                interface_3_1();
                 break;
-            case 4:
-                interface_4();
             default:
                 cout << "Invalid choice..\n"
                         "Exiting..\n";
