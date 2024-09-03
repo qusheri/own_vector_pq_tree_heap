@@ -10,8 +10,10 @@ private:
     }
     size_t size_;
     T *val;
+
     //sorting helpers
 
+        //merge sort
     template<typename Comparator = std::less<T>>
     void merge_sort(int left, int right, Comparator comparator) {
         if (left < right) {
@@ -21,7 +23,6 @@ private:
             merging(comparator, left, mid + 1, mid, right);
         }
     }
-
     template<typename Comparator = std::less<T>>
     void merging(Comparator comparator, int ptr1, int ptr2, int wall1, int wall2) {
         int i = 0, ptr = ptr1;
@@ -45,6 +46,26 @@ private:
         for (int z = 0; z < i; ++z) {
             val[ptr++] = Arr[z];
         }
+    }
+
+    //quick sort //5, 2, 2, 4, 2, 9
+    template<typename Comparator = std::less<T>>
+    void quick_sort(DynamicArray<T>& arr, Comparator comparator){ //&&&&&
+        DynamicArray<T> left, right;
+        T pivot = arr[arr.Size()/2];
+        for(int i = 0; i < arr.Size(); ++i) {
+            if(i != arr.Size()/2) {
+                if (comparator(arr[i], pivot)) {
+                    left.Append(arr[i]);
+                } else {
+                    right.Append(arr[i]);
+                }
+            }
+        }
+        if(left.Size() > 1) quick_sort(left, comparator);
+        if(right.Size() > 1) quick_sort(right, comparator);
+        left.Append(pivot);
+        arr = left + right;
     }
 public:
     DynamicArray() : size_(0), val(new T[size_]) {}
@@ -70,7 +91,30 @@ public:
     [[nodiscard]] size_t Size() const {
         return size_;
     }
+    DynamicArray<T>& operator=(const DynamicArray<T>& other) {
+        if (this == &other) {
+            return *this;
+        }
+        delete[] val;
+        size_ = other.size_;
+        val = new T[size_];
+        for (size_t i = 0; i < size_; ++i) {
+            val[i] = other.val[i];
+        }
 
+        return *this;
+    }
+    DynamicArray<T> operator+(const DynamicArray<T>& other) const {
+        DynamicArray<T> result;
+        result.Resize(this->size_ + other.size_);
+        for (size_t i = 0; i < this->size_; ++i) {
+            result[i] = this->val[i];
+        }
+        for (size_t i = 0; i < other.size_; ++i) {
+            result[this->size_ + i] = other.val[i];
+        }
+        return result;
+    }
     void Resize(size_t newSize) {
         if (newSize == size_) return;
         if (newSize > size_) {
@@ -87,6 +131,12 @@ public:
         }
         size_ = newSize;
     }
+
+    void Append(T new_el){
+        (*this).Resize(size_ + 1);
+        val[size_ - 1] = new_el;
+    }
+
     const T &operator[](const size_t i) const {
         return val[i];
     }
@@ -94,7 +144,6 @@ public:
     T &operator[](const size_t i) {
         return val[i];
     }
-
     //SORTING
     //bubble sort
     template<typename Comparator = std::less<T>>
@@ -153,5 +202,8 @@ public:
     }
 
     //Quick sort
-
+    template<typename Comparator = std::less<T>>
+    void quick_sort(Comparator comparator){
+        quick_sort(*this, comparator);
+    }
 };
